@@ -1,0 +1,38 @@
+@import '../../../theme/variables.scss';
+
+.fullscreen-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+ion-button {
+    display: block;
+    height: auto;
+    margin: 4rem auto 0 auto;
+    
+    &[disabled] {
+        opacity: 0.2;
+    }
+}
+
+form {
+    width: 80%;
+}
+
+ion-input {
+    color: var(--ion-color-secondary);
+    border-bottom: 1px solid var(--ion-color-secondary);
+    margin-top: 3rem;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+h1 {
+    font-weight: 400;
+    text-align: center;
+}
