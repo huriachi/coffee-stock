@@ -3,7 +3,7 @@
 Basic Ionic mobile application that allows for coffee flavour management.
 The targeted platforms are **iOS** and **Android**.
 
-## Environment Setup<a name="environment-setup"></a>
+## Environment Setup
 
 The following resources are perfect for getting your environment set up:
 
@@ -30,7 +30,7 @@ $ ionic cordova prepare android
 $ ionic cordova run android
 ```
 
-If you run into issues, please make sure your [environment](environment-setup) 
+If you run into issues, please make sure your [environment](#environment-setup) 
 is set up correctly. You can also head over to the [official docs](https://ionicframework.com/docs/building/android) 
 for additional troubleshooting.
 
