@@ -29,7 +29,6 @@ export class PictureService {
 
   /**
    * Retrieves a picture from the specified source. It allows for cropping.
-   * 
    * @param sourceType The source from which to retrieve the photo.
    */
   private getPictureFromSource(sourceType: number): Promise<string> {
@@ -45,14 +44,13 @@ export class PictureService {
       .then((imagePath) => {
         return this.crop.crop(imagePath, cropOptions);
       })
-      .then((cropPath) => {        
+      .then((cropPath) => {
         return cropPath;
-      })
+      });
   }
 
   /**
    * Persists a picture to the local filesystem.
-   * 
    * @param picture The path of the picture to persist.
    */
   public savePicture(picture: string) {
@@ -64,7 +62,6 @@ export class PictureService {
 
   /**
    * Removes a picture from the local filesystem.
-   * 
    * @param picture The path of the picture to delete.
    */
   public deletePicture(picture: string) {
@@ -86,7 +83,6 @@ export class PictureService {
   /**
    * Updates a picture on disk by deleting the previous entry and persisting the
    * new one.
-   * 
    * @param newPicture The path of the new picture.
    * @param oldPicture The path of the old picture.
    */
@@ -97,7 +93,7 @@ export class PictureService {
           // The image has not been found.
         })
         .then(() => {
-          return this.savePicture(newPicture)
+          return this.savePicture(newPicture);
         });
     }
     return Promise.resolve();
@@ -105,7 +101,6 @@ export class PictureService {
 
   /**
    * Persists a picture to our application directory.
-   * 
    * @param file The file to persist.
    */
   private copyPicture(file: Entry): Promise<FileEntry> {
@@ -113,9 +108,9 @@ export class PictureService {
       this.checkPictureDirectory()
         .then((directory) => {
           file.copyTo(directory, Date.now().toString(), (entry: FileEntry) => {
-            resolve(entry)
+            resolve(entry);
           }, (error) => {
-            reject(error)
+            reject(error);
           });
         });
     });

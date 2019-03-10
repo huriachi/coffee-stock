@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { WebView } from "@ionic-native/ionic-webview/ngx";
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 import { Flavour, FlavourQueryService } from 'src/app/services/database/flavour-query.service';
 import { PictureService } from 'src/app/services/storage/picture.service';
@@ -75,7 +75,7 @@ export class ManageFlavoursPage implements OnInit {
    * Presents options that allow the user to attach a picture to the flavour.
    */
   public async presentPictureOptions() {
-    let buttons = [{
+    const buttons = [{
       text: 'Load from Library',
       handler: () => {
         this.picture.getPictureFromAlbum()
@@ -148,7 +148,7 @@ export class ManageFlavoursPage implements OnInit {
       })
       // Display an error message to the user.
       .catch(() => {
-        this.presentAlert('Oops', 
+        this.presentAlert('Oops',
           'There was a problem adding your flavour. Please try again.'
         );
       });
@@ -177,9 +177,8 @@ export class ManageFlavoursPage implements OnInit {
 
   /**
    * Presents a customizable alert that informs the user of something.
-   * 
-   * @param header 
-   * @param message 
+   * @param header The text that will display in the title of the alert.
+   * @param message The text that will display in the body of the alert.
    */
   private async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { retry, map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { map, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +16,15 @@ export class LoginService {
 
   /**
    * Attempts authentication against the login endpoint.
-   * 
    * @param username The username as entered by the user.
    * @param password The password as entered by the user.
    */
   public login(username: string, password: string) {
     const body = `<?xml version="1.0" encoding="utf-8"?>
-    <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+    <soap12:Envelope
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
     <soap12:Body>
     <Login xmlns="http://tempuri.org/">
     <username>${username}</username>
@@ -36,16 +38,15 @@ export class LoginService {
     return this.http.post(this.uri, body, {responseType: 'text', headers})
       .pipe(map((response) => {
         return this.parseSoapAuthenticationStatus(response);
-      }), retry(5));
+      }), retry(2));
   }
 
   /**
    * Parse the given XML response to get the authentication status.
-   * 
    * @param response The XML response from the authentication endpoint.
    */
   private parseSoapAuthenticationStatus(response: string) {
-    let authenticated: boolean = false;
+    let authenticated = false;
     const xml = new DOMParser().parseFromString(response, 'text/xml');
     const tags =  xml.getElementsByTagName('LoginResult');
 

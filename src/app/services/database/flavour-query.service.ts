@@ -20,11 +20,10 @@ export class FlavourQueryService {
 
   /**
    * Adds a a flavour to our database.
-   * 
    * @param flavour The flavour information that should be added.
    */
   public addFlavour(flavour: Flavour) {
-    return this.db.connection.executeSql(`INSERT INTO Flavours 
+    return this.db.connection.executeSql(`INSERT INTO Flavours
       (Barcode, Name, PricePerBox, PricePerPod, PodsPerBox, PhotoName)
       VALUES (?, ?, ?, ?, ?, ?)`, [
         flavour.Barcode,
@@ -38,7 +37,6 @@ export class FlavourQueryService {
 
   /**
    * Updates a flavour inside our database.
-   * 
    * @param flavour The updated flavour information.
    */
   public updateFlavour(flavour: Flavour) {
@@ -71,7 +69,6 @@ export class FlavourQueryService {
 
   /**
    * Retrieves a specific flavour that is stored in the database.
-   * 
    * @param flavourID The ID of the flavour that should be retrieved.
    */
   public getFlavour(flavourID: string | number): Promise<Flavour> {
@@ -82,11 +79,10 @@ export class FlavourQueryService {
   /**
    * Helper function that takes a database resultset and convers it into an
    * array of Flavour objects.
-   * 
    * @param data The database resultset.
    */
   private assignFlavour(data) {
-    let flavours: Flavour[] = [];
+    const flavours: Flavour[] = [];
     for (let i = 0; i < data.rows.length; i++) {
       flavours.push({
         ID: data.rows.item(i).ID,
@@ -103,7 +99,6 @@ export class FlavourQueryService {
 
   /**
    * Deletes a flavour from the database.
-   * 
    * @param flavour The flavour that should be deleted.
    */
   public deleteFlavour(flavour: Flavour) {

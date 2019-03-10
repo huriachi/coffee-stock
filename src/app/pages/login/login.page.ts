@@ -28,7 +28,6 @@ export class LoginPage implements OnInit {
 
   /**
    * When the user presses enter on the password field, we initiate login.
-   * 
    * @param event The click event.
    */
   public enterLogin(event) {
@@ -47,18 +46,24 @@ export class LoginPage implements OnInit {
             this.loginForm.reset();
           });
         } else {
-          this.loginFailedAlert();
+          this.loginFailedAlert('Invalid Credentials',
+          'Please check that you have entered your username and password correctly.');
         }
+      }, (error) => {
+        this.loginFailedAlert('Login Failure',
+          'There was a problem communicating with the server. Please try again later.');
       });
   }
 
   /**
-   * Presents an alert indicating that the user's login was unsuccessful.
+   * Displays a message to the user regarding the login.
+   * @param header The title of the alert.
+   * @param message The contents in the body of the alert.
    */
-  private async loginFailedAlert() {
+  private async loginFailedAlert(header: string, message: string) {
     const alert = await this.alertController.create({
-      header: 'Invalid Credentials',
-      message: 'Please check that you have entered your username and password correctly.',
+      header: header,
+      message: message,
       buttons: ['Ok']
     });
 

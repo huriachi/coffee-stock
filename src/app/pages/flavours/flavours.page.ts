@@ -52,7 +52,6 @@ export class FlavoursPage implements OnInit {
 
   /**
    * Deletes the specified flavour from the database.
-   * 
    * @param flavour The flavour that should be deleted.
    */
   private deleteFlavour(flavour: Flavour) {
@@ -67,7 +66,6 @@ export class FlavoursPage implements OnInit {
 
   /**
    * Presents the user with an alert that confirms the deletion of a flavour.
-   * 
    * @param flavour The flavour that will be deleted.
    */
   async presentDeleteAlert(flavour: Flavour) {
