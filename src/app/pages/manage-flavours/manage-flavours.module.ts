@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { IonicModule } from '@ionic/angular';
-import { LoginPage } from './login.page';
+import { ManageFlavoursPage } from './manage-flavours.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: ManageFlavoursPage
   }
 ];
 
@@ -16,10 +17,13 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
-  declarations: [LoginPage]
+  declarations: [ManageFlavoursPage],
+  providers: [
+    BarcodeScanner
+  ]
 })
-export class LoginPageModule {}
+export class ManageFlavoursPageModule {}

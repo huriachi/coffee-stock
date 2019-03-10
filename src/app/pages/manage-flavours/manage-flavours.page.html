@@ -1,0 +1,78 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" [routerLink]="['/flavours']" routerDirection="back">
+        <img src="assets/icon/icon_back.svg" />
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ id ? 'EDIT' : 'ADD' }} FLAVOUR</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="scanBarcode()">
+        <img src="assets/icon/icon_scan.svg" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="flavourForm">
+    <ion-grid>
+      <ion-row justify-content-between>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating" color="primary">BARCODE</ion-label>
+            <ion-input color="dark" inputmode="number" type="number" formControlName="Barcode"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="auto" align-self-end>
+          <ion-item button lines="none" detail="false" class="image-button" (click)="presentPictureOptions()">
+            <img *ngIf="!flavourForm.value.PhotoName" src="assets/image/image_placeholder.svg" />
+            <img *ngIf="flavourForm.value.PhotoName" [src]="webView.convertFileSrc(flavourForm.value.PhotoName)" />
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating" color="primary">FLAVOUR NAME</ion-label>
+            <ion-input color="dark" formControlName="Name" autocapitalize></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating" color="primary">PRICE PER BOX</ion-label>
+            <ion-input color="dark" inputmode="numeric" type="number" formControlName="PricePerBox"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating" color="primary">PRICE PER POD</ion-label>
+            <ion-input color="dark" inputmode="numeric" type="number" formControlName="PricePerPod"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating" color="primary">PODS PER BOX</ion-label>
+            <ion-input color="dark" inputmode="numeric" type="number" formControlName="PodsPerBox"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-footer class="hide-on-keyboard-open">
+  <ion-toolbar color="primary">
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-item button lines="none" detail="false" [disabled]="!flavourForm.valid" (click)="id ? editFlavour() : saveFlavour()">
+          <img [src]="id ? 'assets/button/button_check.svg' : 'assets/icon/icon_add.svg'" class="submit-button" />
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

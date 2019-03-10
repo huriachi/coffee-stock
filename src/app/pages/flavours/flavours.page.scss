@@ -1,0 +1,86 @@
+@import "../../../theme/variables.scss";
+
+.custom-card {
+    margin: 1.5rem 1.5rem 0rem 1.5rem;
+    box-shadow: 0 0 0 1px var(--ion-color-medium);
+    background-color: white;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    height: 6.8em;
+
+    &:first-of-type {
+        margin-top: 2rem;
+    }
+
+    &:last-of-type {
+        margin-bottom: 2rem;
+    }
+
+    &-buttons {
+        & > ion-item {
+            margin-right: 1.1rem;
+        }
+    }
+
+    &-left-info {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        justify-content: space-between;
+
+        & > div {
+            & > h1 {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    &-right-info {
+       display: flex;
+       align-items: center;
+
+        & > img {
+            height: 4.8em;
+        }
+    }
+}
+
+.no-flavours {
+    padding: 2rem;
+    text-align: center;
+    color: var(--ion-color-dark);
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--ion-color-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+h2 {
+    color: var(--ion-color-dark);
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding-top: 0.15rem;
+}
+
+ion-button {
+    width: auto;
+    height: auto;
+}
+
+ion-item {
+    display: inline-block;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0;
+    --min-height: 0;
+}

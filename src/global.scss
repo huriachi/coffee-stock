@@ -9,3 +9,42 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@import './theme/variables.scss';
+
+ion-header {
+    padding: 0.5rem;
+    background-color: var(--ion-color-primary);
+
+    & > ion-toolbar {
+        --background: transparent;
+        --color: white;
+
+        & > ion-title {
+            text-align: center;
+            font-weight: 300;
+        }
+    }
+}
+
+ion-footer {
+    background-color: var(--ion-color-primary);
+
+    & > ion-toolbar {
+        --background: transparent;
+    }
+}
+
+ion-toolbar {
+    --border-style: none;
+}
+
+body {
+    &.hide-on-keyboard-open {
+        ion-footer {
+            &.hide-on-keyboard-open {
+                display: none;
+            }
+        }
+    }
+}

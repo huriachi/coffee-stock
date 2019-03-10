@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { DatabaseService } from './services/database/database.service';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +11,23 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private keyboard: Keyboard,
+    private database: DatabaseService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.database.initialize();
+
+      this.keyboard.onKeyboardWillShow().subscribe(() => {
+        document.body.classList.add('hide-on-keyboard-open');
+      });
+
+      this.keyboard.onKeyboardWillHide().subscribe(() => {
+        document.body.classList.remove('hide-on-keyboard-open');
+      });
     });
   }
 }

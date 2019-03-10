@@ -1,13 +1,21 @@
 <ion-content color="primary" scrollY="false" scrollX="false">
-  <div class="fullscreen-center">
-    <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
-      <img src="assets/logos/logo_icon.svg" />
-      <h1>LOGIN</h1>
-      <ion-input type="text" placeholder="USERNAME" formControlName="username"></ion-input>
-      <ion-input type="password" placeholder="PASSWORD" formControlName="password" (keyup.enter)="enterLogin($event)"></ion-input>
-      <ion-button type="submit" fill="clear" [disabled]="!loginForm.valid || submitting">
-          <img src="assets/button/button_login.svg" />
-      </ion-button>
-      </form>
-  </div>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+          <img src="assets/logos/logo_icon.svg" />
+          <h1>LOGIN</h1>
+          <ion-item>
+            <ion-label position="floating" color="secondary">USERNAME</ion-label>
+            <ion-input type="text" formControlName="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" color="secondary">PASSWORD</ion-label>
+            <ion-input type="password" formControlName="password" (keyup.enter)="enterLogin($event)"></ion-input>
+          </ion-item>
+          <ion-button type="submit" fill="clear" [disabled]="!loginForm.valid || submitting">
+              <img src="assets/button/button_login.svg" />
+          </ion-button>
+        </form>
+    </ion-row>
+  </ion-grid>
 </ion-content>

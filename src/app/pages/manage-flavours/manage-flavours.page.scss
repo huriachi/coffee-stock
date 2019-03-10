@@ -1,0 +1,23 @@
+@import '../../../theme/variables.scss';
+
+ion-item {
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0;
+    --background-focused: transparent;
+}
+
+ion-footer {
+    padding: 1em;
+}
+
+.submit-button {
+    height: 6em;
+}
+
+.image-button {
+    & > img {
+        height: 65px;
+    }
+}

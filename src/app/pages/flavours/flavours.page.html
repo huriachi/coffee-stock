@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="sync()">
+        <img src="assets/icon/icon_sync.svg" />
+      </ion-button>
+    </ion-buttons>
+    <ion-title>COFFEE FLAVOURS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/manage-flavours']">
+        <img src="assets/icon/icon_add.svg" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <div *ngIf="flavours.length === 0" class="no-flavours">You have no flavours. This would be a great time to add some!</div>
+  <div *ngFor="let flavour of flavours" class="custom-card">
+    <div class="custom-card-left-info">
+      <div>
+        <h1>{{ flavour.Name }}</h1>
+        <h2>{{ flavour.Barcode }}</h2>
+      </div>
+      <div class="custom-card-buttons">
+        <ion-item button lines="none" detail="false" [routerLink]="['/manage-flavours', flavour.ID]">
+          <img src="assets/icon/icon_edit.svg" />
+        </ion-item>
+        <ion-item button lines="none" detail="false" (click)="presentDeleteAlert(flavour)">
+          <img src="assets/icon/icon_delete.svg" />
+        </ion-item>
+      </div>
+    </div>
+    <div class="custom-card-right-info">
+      <img [src]="webView.convertFileSrc(flavour.PhotoName)" />
+    </div>
+  </div>
+</ion-content>

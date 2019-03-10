@@ -1,9 +1,6 @@
 @import '../../../theme/variables.scss';
 
-.fullscreen-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ion-grid, ion-row {
     height: 100%;
 }
 
@@ -21,10 +18,23 @@ form {
     width: 80%;
 }
 
+ion-item {
+    margin-top: 1rem;
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0;
+    --min-height: 0;
+    --border-color: var(--ion-color-secondary);
+    --background-focused: transparent;
+}
+
 ion-input {
-    color: var(--ion-color-secondary);
-    border-bottom: 1px solid var(--ion-color-secondary);
-    margin-top: 3rem;
+    --color: var(--ion-color-secondary);
+}
+
+ion-label {
+    --color: var(--ion-color-secondary);
 }
 
 img {
